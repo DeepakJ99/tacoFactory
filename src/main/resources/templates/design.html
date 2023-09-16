@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns = "http://www.w3.org/1999/xhtml"
+                xmlns:th = "http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Design Taco</title>
+  <link th:href = "@{/styles/style.css}" rel = "stylesheet">
+</head>
+<body>
+<h1>Design your own taco:</h1>
+  <form method="POST" th:object="${taco}">
+    <div class = "container">
+      <div class = "ing-group" id = "wraps">
+        <h3>Wrap:</h3>
+        <div th:each = "ingredient : ${wrap}">
+          <input th:field="*{ingredients}" type = "checkbox" th:value = "${ingredient.id}">
+          <span th:text = "${ingredient.name}">placeholder</span>
+        </div>
+      </div>
+      <div class = "ing-group" id = "proteins">
+        <h3>Protein:</h3>
+        <div th:each = "ingredient : ${protein}">
+          <input th:field="*{ingredients}" type = "checkbox" th:value = "${ingredient.id}">
+          <span th:text = "${ingredient.name}">placeholder</span>
+        </div>
+
+      </div>
+      <div class = "ing-group" id = "cheeses">
+        <h3>Cheese:</h3>
+        <div th:each = "ingredient : ${cheese}">
+          <input th:field="*{ingredients}" type = "checkbox" th:value = "${ingredient.id}">
+          <span th:text = "${ingredient.name}">placeholder</span>
+        </div>
+
+      </div>
+      <div class = "ing-group" id = "veggies">
+        <h3>Veggies:</h3>
+        <div th:each = "ingredient : ${veggies}">
+          <input th:field="*{ingredients}" type = "checkbox" th:value = "${ingredient.id}">
+          <span th:text = "${ingredient.name}">placeholder</span>
+        </div>
+
+      </div>
+      <div class = "ing-group" id = "sauces">
+        <h3>Sauces:</h3>
+        <div th:each = "ingredient : ${sauce}">
+          <input th:field="*{ingredients}" type = "checkbox" th:value = "${ingredient.id}">
+          <span th:text = "${ingredient.name}">placeholder</span>
+        </div>
+
+      </div>
+      <input type = "text" th:field="*{name}">
+
+      <span th:if = "${#fields.hasAnyErrors()}" class="validation"><span class="iconWarning"></span> Some error in data!</span>
+      <input type="submit" name = "Submit">
+    </div>
+  </form>
+</body>
+</html>

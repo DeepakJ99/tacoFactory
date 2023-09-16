@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns = "http://www.w3.org/1999/xhtml"
+                xmlns:th = "http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>AddressForm</title>
+  <link th:href = "@{/styles/style.css}" rel = "stylesheet">
+</head>
+<body>
+  <h1>Already made tacos</h1>
+  <div id = "list-of-tacos">
+    <ol>
+      <li th:each="taco : ${tacoOrder.tacos}">
+        <span th:text = "${taco.name}"></span>
+      </li>
+    </ol>
+  </div>
+  <a th:href = "@{/design}">Make another one?</a>
+  <h1> Deliver my tacos to : </h1>
+  <form method = "POST" th:object="${address}" th:action = "@{/orders}">
+    <label for = "deliveryName">Name: </label>
+    <input type = "text" th:field = "*{deliveryName}"/>
+    <label for = "deliveryState">State: </label>
+    <input type = "text" th:field = "*{deliveryState}"/>
+    <label for = "deliveryCity">City: </label>
+    <input type = "text" th:field = "*{deliveryCity}"/>
+    <label for = "deliveryStreet">Street: </label>
+    <input type = "text" th:field = "*{deliveryStreet}"/>
+    <label for = "deliveryZip">Zip: </label>
+    <input type = "text" th:field = "*{deliveryZip}"/>
+    <input type="submit" value = "Submit">
+  </form>
+</body>
+</html>

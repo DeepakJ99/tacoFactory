@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns = "http://www.w3.org/1999/xhtml"
+      xmlns:th = "http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Design Taco</title>
+    <link th:href = "@{/styles/style.css}" rel = "stylesheet">
+</head>
+<body>
+    <h1> Register </h1>
+
+    <form method="POST" th:action="@{/auth/register}" id = "registerForm">
+        <span th:if = "${#fields.hasAnyErrors()}" class="validation"><span class="iconWarning"></span> Some error in data!</span>
+        <label for="email"> Email : </label>
+        <input type="email" name = "email">
+        <label for="password"> Password :</label>
+        <input type="password" name = "password">
+        <input type = "submit" value= "Regsiter">
+    </form>
+</body>
+</html>
